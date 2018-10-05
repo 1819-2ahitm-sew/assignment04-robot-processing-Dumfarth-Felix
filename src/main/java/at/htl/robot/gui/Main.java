@@ -3,6 +3,9 @@ package at.htl.robot.gui;
 import at.htl.robot.model.Robot;
 import processing.core.PApplet;
 
+/**
+ * Felix Dumfarth
+ */
 
 public class Main extends PApplet {
 
