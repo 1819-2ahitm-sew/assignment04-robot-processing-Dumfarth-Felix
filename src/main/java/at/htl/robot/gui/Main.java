@@ -8,6 +8,11 @@ import processing.core.PApplet;
  */
 
 public class Main extends PApplet {
+    int leftMargin = 20;
+    int upperMargin = 50;
+    int boxLenght = 50;
+    Robot robot;
+
 
     // Hier die Member-Attribute eintragen
 
@@ -21,7 +26,9 @@ public class Main extends PApplet {
 
     public void setup() {
         background(209); //https://processing.org/tutorials/color/
-
+        robot = new Robot();
+        robot.setX(1);
+        robot.setY(1);
 
     }
 
@@ -30,6 +37,25 @@ public class Main extends PApplet {
      */
     public void draw() {
 
+        textSize((int) (upperMargin * 0.5));
+        text("<F> Forward   <L> Rotate Left",10,30);
+        strokeWeight(2);
+        for (int i = 0; i < 11; i++) {
+
+
+            line(leftMargin, upperMargin + i * boxLenght, leftMargin + 10 * boxLenght, upperMargin + i * boxLenght);
+            line(leftMargin + i * boxLenght, upperMargin, leftMargin + i * boxLenght, upperMargin + 10 * boxLenght);
+            int boxCenterX = leftMargin + robot.getX() * boxLenght - boxLenght / 2;
+            int boxCenterY = upperMargin + robot.getY() * boxLenght - boxLenght / 2;
+
+            ellipse(boxCenterX,
+                    boxCenterY,
+                    (int) (boxLenght * 0.8),
+                    (int) (boxLenght * 0.8));
+
+
+
+        }
     }
 
     /**
@@ -48,7 +74,7 @@ public class Main extends PApplet {
      * Erstellen Sie eine eigene Methode zum Löschen des Bildschirms
      */
     public void deleteAll() {
-
+        background(209);
     }
 
     /**
@@ -56,11 +82,15 @@ public class Main extends PApplet {
      */
     public void keyPressed() {
         println("pressed " + key + " " + keyCode);
+        int boxCenterX = leftMargin + robot.getX() * boxLenght - boxLenght / 2;
+        int boxCenterY = upperMargin + robot.getY() * boxLenght - boxLenght / 2;
+
 
         if (key == 'f' || key == 'F') {
-
+            deleteAll();
+            robot.stepForward();
         } else if (key == 'l' || key == 'L') {
-
+            robot.rotateLeft();
         }
 
     }

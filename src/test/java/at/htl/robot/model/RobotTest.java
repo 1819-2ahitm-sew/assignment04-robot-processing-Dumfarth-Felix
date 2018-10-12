@@ -1,4 +1,4 @@
-package at.htl.robot.model;
+/*package at.htl.robot.model;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -134,4 +134,4 @@ class RobotTest {
         assertThat("Falsche Richtung", robot.getDirection(), is(Direction.EAST));
     }
 
-}
+}*/
